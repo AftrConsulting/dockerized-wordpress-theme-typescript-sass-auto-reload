@@ -1,0 +1,34 @@
+{
+	"name": "aftrconsulting_theme",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "webpack serve",
+		"build": "cross-env NODE_ENV=production webpack --mode production"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/preset-env": "^7.13.5",
+		"@jasson2788/eslint-config-typescript": "^1.0.5",
+		"@typescript-eslint/eslint-plugin": "^4.28.0",
+		"@typescript-eslint/parser": "^4.28.0",
+		"@webpack-cli/serve": "^1.5.1",
+		"chokidar": "^3.5.2",
+		"core-js": "^3.9.0",
+		"cross-env": "^7.0.3",
+		"css-loader": "^5.1.0",
+		"eslint": "^7.29.0",
+		"eslint-plugin-jsdoc": "^35.4.0",
+		"mini-css-extract-plugin": "^1.3.9",
+		"node-sass": "^6.0.0",
+		"sass-loader": "^12.1.0",
+		"terser-webpack-plugin": "^5.1.1",
+		"ts-loader": "^9.2.3",
+		"typescript": "^4.3.4",
+		"webpack": "^5.24.2",
+		"webpack-cli": "^4.5.0",
+		"webpack-dev-server": "^3.11.2"
+	}
+}

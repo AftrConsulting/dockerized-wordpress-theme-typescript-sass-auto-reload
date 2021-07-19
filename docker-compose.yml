@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb:10.6
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    environment:
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+  wordpress:
+    build:
+      context: ./docker/php
+    restart: always
+    volumes:
+      - wordpress_data:/var/www/html
+      - './theme:/var/www/html/wp-content/themes/theme'
+      - './docker/php/transform-images.sh:/var/www/html/wp-content/transform-images.sh'
+      - './docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini'
+    ports:
+      - '8181:80'
+    depends_on:
+      - mariadb
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WP_URL: ${WP_URL}
+      WORDPRESS_DEBUG: ''
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', getenv_docker('WP_URL', ''));
+        define('WP_SITEURL', getenv_docker('WP_URL', ''));
+        define('FORCE_SSL_ADMIN', false);
+  node:
+    image: node:16-alpine
+    restart: always
+    volumes:
+      - './theme:/var/www/html/wp-content/themes/theme'
+      - /var/www/html/wp-content/themes/theme/node_modules
+    working_dir: /var/www/html/wp-content/themes/theme
+volumes:
+  mariadb_data:
+    driver: local
+  wordpress_data:
+    driver: local

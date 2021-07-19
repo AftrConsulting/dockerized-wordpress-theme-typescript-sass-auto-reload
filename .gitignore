@@ -1,0 +1,5 @@
+.env
+wordpress_data
+theme/node_modules/
+theme/vendor/
+theme/dist/
