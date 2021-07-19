@@ -1,4 +1,4 @@
-# Dockerized Wordpress Theme With TypeScript, Sass, and Auto Reload Support
+# Dockerized Wordpress Theme With TypeScript, Sass, and Auto-Reload Support
 
 # Features
 
@@ -21,6 +21,4 @@ GTM_TAG=
 WP_URL=
 ```
 
-2. For migration
-    1. Install certbot & generate certificate
-    2. Copy nginx config file from docker/nginx.conf
+2. Do: sh start.sh

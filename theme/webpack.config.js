@@ -10,7 +10,7 @@ const Chokidar = require('chokidar');
 
 module.exports = {
     context: __dirname,
-    entry: [ './public/index.ts' ],
+    entry: [ './src/index.ts' ],
     output: {
         path: Path.resolve(__dirname, 'dist'),
         filename: '[name].js'
