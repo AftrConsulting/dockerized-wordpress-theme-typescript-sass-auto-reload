@@ -22,3 +22,7 @@ WP_URL=http://localhost:8181
 ```
 
 2. Do: sh start.sh
+
+# Common Bugs
+
+If you get a permission error with docker replace the user id from 1000 to your current user id.
