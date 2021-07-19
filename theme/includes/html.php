@@ -33,7 +33,9 @@ function get_head() { ?>
  * Returns the analytics of the application.
  */
 function get_analytics() {
-    if(is_dev() || current_user_can('administrator')) return;
+	$gtm = getenv('GTM_TAG') ?? '';
+
+    if(is_dev() || current_user_can('administrator') || empty($gtm)) return;
 
     ?>
         <script>
@@ -49,7 +51,7 @@ function get_analytics() {
                 j.async = true;
                 j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', '{CODE}');
+            })(window, document, 'script', 'dataLayer', '<?=$gtm;?>');
         </script>
     <?php
 }

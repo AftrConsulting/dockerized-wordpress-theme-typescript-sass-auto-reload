@@ -18,7 +18,7 @@ MARIADB_DATABASE=
 MARIADB_PASSWORD=
 MARIADB_ROOT_PASSWORD=
 GTM_TAG=
-WP_URL=
+WP_URL=http://localhost:8181
 ```
 
 2. Do: sh start.sh
